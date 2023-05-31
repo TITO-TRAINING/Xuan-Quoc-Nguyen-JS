@@ -1,0 +1,5 @@
+Giải thích:
+
+Đầu tiên, chúng ta sử dụng hàm do định nghĩa hàm f là một hàm nhận một tham số a và trả về một hàm có tham số b. Hàm này trả về tổng của a và b.
+
+Sau đó, chúng ta sử dụng hàm print để in ra kết quả của việc gọi hàm f với tham số 4 và sau đó gọi nó với tham số 5. Kết quả trả về là 9.
