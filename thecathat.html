@@ -1,0 +1,53 @@
+
+
+<img src="http://eloquentjavascript.net/img/cat.png" id="cat" style="position: absolute">
+<img src="http://eloquentjavascript.net/img/hat.png" id="hat" style="position: absolute">
+
+<script>
+  var cat = document.querySelector("#cat"),
+      hat = document.querySelector("#hat"),
+      angleCat = 0, 
+      angleHat = Math.PI, // sets hat opposite cat
+      lastTime = null;
+
+  function animate(time) {
+    if (lastTime != null) {
+      angleCat += (time - lastTime) * 0.001;
+      angleHat += (time - lastTime) * 0.001;
+    }
+    lastTime = time; 
+
+    cat.style.top = (200 + (Math.sin(angleCat) * 200)) + "px";
+    cat.style.left = (400 + (Math.cos(angleCat) * 400)) + "px"; 
+    hat.style.top = (200 + (Math.sin(angleHat) * 200)) + "px"; 
+    hat.style.left = (400 + (Math.cos(angleHat) * 400)) + "px"; 
+
+    requestAnimationFrame(animate); // continues animation
+  }
+
+  requestAnimationFrame(animate); // begins animation
+</script> 
+
+
+<!-- Eloquent JavaScript answer: -->
+<script>
+  var cat = document.querySelector("#cat");
+  var hat = document.querySelector("#hat");
+
+  var angle = 0, lastTime = null;
+  function animate(time) {
+    if (lastTime != null)
+      angle += (time - lastTime) * 0.0015;
+    lastTime = time;
+
+    cat.style.top = (Math.sin(angle) * 50 + 80) + "px";
+    cat.style.left = (Math.cos(angle) * 200 + 230) + "px";
+    // By adding π to the angle, the hat ends up half a circle ahead of the cat
+    var hatAngle = angle + Math.PI;
+    hat.style.top = (Math.sin(hatAngle) * 50 + 80) + "px";
+    hat.style.left = (Math.cos(hatAngle) * 200 + 230) + "px";
+
+    requestAnimationFrame(animate);
+  }
+  requestAnimationFrame(animate);
+</script> 
